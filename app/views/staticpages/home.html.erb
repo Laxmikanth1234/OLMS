@@ -1,0 +1,52 @@
+<% provide(:title, 'Online Learning Management System') %>
+
+<!--div class="center hero-unit ">
+  <h1>Welcome to jobcube</h1>
+
+-->
+
+    <div id="jobcarousel" class="carousel slide">
+    <ol class="carousel-indicators">
+    <li data-target="#jobcarousel" data-slide-to="0" class="active"></li>
+    <li data-target="#jobcarousel" data-slide-to="1"></li>
+    <li data-target="#jobcarousel" data-slide-to="2"></li>
+    </ol>
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+    <div class="active item">
+      <%= link_to image_tag("slider-img1.jpg", alt: "jobcube") %>
+
+      <embed
+width="420" height="345"
+src="http://www.youtube.com/v/XGSy3_Czz8k"
+type="application/x-shockwave-flash">
+</embed>
+
+      
+      <div class="carousel-caption">
+        <h4>SCG</h4>
+          <p>Skill Capture Genius.<p>
+        </div>
+    </div>
+    <div class="item">
+      <%= link_to image_tag("slider-img2.jpg", alt: "jobcube") %>
+      <div class="carousel-caption">
+        <h4>ISM</h4>
+          <p>Intelligent Skill Match.<p>
+        </div>
+    </div>
+    <div class="item">
+       <%= link_to image_tag("slider-img3.jpg", alt: "jobcube") %>
+       <div class="carousel-caption">
+         <h4>AHA</h4>          
+          <p>Advanced Heuristics Analysis.<p>
+        </div>
+    </div>
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#jobcarousel" data-slide="prev" data-interval=5000 data-hover="pause">&lsaquo;</a>
+    <a class="carousel-control right" href="#jobcarousel" data-slide="next" data-interval=5000 data-hover="pause">&rsaquo;</a>
+    </div>
+
+  <!%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>

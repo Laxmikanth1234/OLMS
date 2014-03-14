@@ -1,0 +1,78 @@
+    <style type="text/css">
+  #facebox .body {
+    width: 500px;
+  }
+  </style>
+  <script>
+   $("#tutorial_video_url").on('change',function(){
+   var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
+    var match = $("#tutorial_video_url").val().match(regExp);
+    if (match&&match[7].length==11){
+        $("tutorial_video_id").val(match[7])
+        return match[7];
+    }else{
+        alert("Url incorrecta");
+    }
+  })
+  </script>
+<div class="body facebox-div" style="width:450px;">
+<%= form_for(@tutorial, :html => { :class => 'form-horizontal' }) do |f| %>
+  <fieldset>
+    <legend> Tutorial Details</legend>
+    <%= f.text_field :video_id %>
+    <div class="control-group">
+      <%= f.label :title,:class => "control-label", :style => "text-align:left"%>
+      <div class="controls" style="margin-left:100px;">
+        <%= f.text_field :title,:class => "input-large","data-required" => true %>
+        <% if @tutorial.errors && @tutorial.errors[:title].present? %>
+          <span class="help-inline" id="error_explanation">
+            <%= @tutorial.errors[:title][0] %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.label :description,:class => "control-label",:style => "text-align:left" %>
+      <div class="controls" style="margin-left:100px;">
+        <%= f.text_area :description,:class => "input-large","data-required" => true,:rows  => 4 %>
+        <% if @tutorial.errors && @tutorial.errors[:description].present? %>
+          <span class="help-inline" id="error_explanation">
+            <%= @tutorial.errors[:description][0] %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :category,:class => "control-label",:style => "text-align:left" %>
+      <div class="controls" style="margin-left:100px;">
+        <%= f.text_field :category,:class => "input-large","data-required" => true,:rows  => 4 %>
+        <% if @tutorial.errors && @tutorial.errors[:category].present? %>
+          <span class="help-inline" id="error_explanation">
+            <%= @tutorial.errors[:category][0] %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :video_url,:class => "control-label",:style => "text-align:left" %>
+      <div class="controls" style="margin-left:100px;">
+        <%= f.text_field :video_url,:class => "input-large","data-required" => true,:rows  => 4 %>
+        <% if @tutorial.errors && @tutorial.errors[:video_url].present? %>
+          <span class="help-inline" id="error_explanation">
+            <%= @tutorial.errors[:video_url][0] %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+       <div class="controls">
+         <%= f.submit "Save", class: "btn btn-medium btn-primary" %>
+         <%= link_to "cancel",tutorials_path ,class: "btn btn-medium btn-info" %>
+       </div>
+    </div>
+  </fieldset>
+<% end %>
+</div>

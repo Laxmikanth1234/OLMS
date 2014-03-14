@@ -1,0 +1,23 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to image_tag("logo.jpg", alt: "EAMS",style: "height:65px;width:200px;"), root_path, id: "logo" %>
+      <%= link_to "EAMS", root_path, id: "logo" %>
+      <nav>
+         <form class="navbar-search pull-right" style="margin-top:20px;" action="<%= user_session_path %>" method="POST">
+            <input type="text" class="span2" name="user[email]" placeholder="User Name">
+            <input type="text" class="span2" name="user[password]" placeholder="Password">
+            <input type="submit" value="Login" class="btn btn-info" style="margin-bottom:14px;"/>
+          </form>
+<%= form_for(resource_name, resource, :url => session_path(resource_name)) do |f| %>
+  <ol class="formList">
+    <li><%= f.label :email %> <%= f.text_field :emai %></li>
+    <li><%= f.label :password %> <%= f.password_field :password %></li>
+
+    <li><%= f.submit "Sign in" %></li>
+  </ol>
+<% end %
+      </nav>
+    </div>
+  </div>
+</header>

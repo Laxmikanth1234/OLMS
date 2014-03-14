@@ -1,0 +1,26 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="navbar-inner">
+    <div class="container">
+      <%= link_to "OLMS", root_path, id: "logo" %>
+      <% if !current_user %>
+      <nav>
+        <%= form_for(resource, :url => session_path(resource_name),:html => {:class => "navbar-search pull-right",:style => "margin-top:20px;"}) do |f| %>
+          <input type="text" class="span2" name="user[email]" placeholder="User Name">
+          <input type="password" class="span2" name="user[password]" placeholder="Password">
+          <input type="submit" value="Login" class="btn btn-info" style="margin-bottom:14px;"/>
+        <% end %>
+      </nav>
+      <% end %>
+      <% if current_user %>
+      <ul class="nav pull-right topnavfix">
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "My Account", "#{}" %></li>
+        <li class="divider-vertical"></li>
+        <li>
+          <%= link_to "Sign out", destroy_user_session_path, method: "delete" %>
+        </li>
+      </ul>
+      <% end %>
+    </div>
+  </div>
+</header>
