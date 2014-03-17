@@ -1,44 +1,36 @@
 <% provide(:title, 'Online Learning Management System') %>
-
-<!--div class="center hero-unit ">
-  <h1>Welcome to jobcube</h1>
-
--->
-
-    <div id="jobcarousel" class="carousel slide">
+<div id="jobcarousel" class="carousel slide">
     <ol class="carousel-indicators">
-    <li data-target="#jobcarousel" data-slide-to="0" class="active"></li>
-    <li data-target="#jobcarousel" data-slide-to="1"></li>
-    <li data-target="#jobcarousel" data-slide-to="2"></li>
+     <% Tutorial.all.each_with_index do |tot,index| %>
+       <li data-target="#jobcarousel" data-slide-to="<%= index%>" class="active"></li>
+     <% end %>
     </ol>
     <!-- Carousel items -->
     <div class="carousel-inner">
-    <div class="active item" style="height:500px;">
-      <img src="http://i1.ytimg.com/vi/f_eiMKp4QW8/0.jpg" style="margin-left:70px;width:740px;height:400px;">
-      <div class="carousel-caption">
-        <h4>SCG</h4>
-          <p>Skill Capture Genius.<p>
+      <% Tutorial.all.each_with_index do |tot,index| %>
+     
+      <div class="item <%= index == 0 ? 'active' : ''  %> video_img"  style="height:500px">
+      <%= link_to image_tag(tot.image_url,style: 'margin-left:70px;width:800px;height:400px;cursor:pointer;',:class => 'image_vid'), tot  %>
+        <div class="carousel-caption">
+            <h4><%= tot.title %></h4>
+            <p><%= tot.category %><p>
+          </div>
+          <div id="play" data-url="<%= tutorial_path(tot) %>">
+          </div>
         </div>
-    </div>
-    <div class="item" style="height:500px;">
-     <iframe style="margin-left:70px;width:740px;height:400px;" src="//www.youtube.com/embed/f_eiMKp4QW8?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
-      <div class="carousel-caption">
-        <h4>ISM</h4>
-          <p>Intelligent Skill Match.<p>
-        </div>
-    </div>
-    <div class="item" style="height:500px;">
-       <%= link_to image_tag("slider-img3.jpg", alt: "jobcube") %>
-       <div class="carousel-caption">
-         <h4>AHA</h4>
-          <p>Advanced Heuristics Analysis.<p>
-        </div>
-    </div>
+        
+      <% end %>
     </div>
     <!-- Carousel nav -->
     <a class="carousel-control left" href="#jobcarousel" data-slide="prev" data-interval=5000 data-hover="pause">&lsaquo;</a>
     <a class="carousel-control right" href="#jobcarousel" data-slide="next" data-interval=5000 data-hover="pause">&rsaquo;</a>
-    </div>
+  </div>
 
   <!%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
 </div>
+  <script>
+   $("#play,.image_vid").on('click',function(){
+    alert("hiiii");
+    e.preventDefault();
+  })
+  </script>

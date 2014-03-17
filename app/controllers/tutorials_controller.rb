@@ -24,8 +24,8 @@ class TutorialsController < ApplicationController
   # GET /tutorials/new
   # GET /tutorials/new.json
   def new
-    @tutorial = Tutorial.new
-
+    @tutorial = Tutorial.new(active: true)
+ 
     respond_to do |format|
       format.html {render layout: false}
       format.json { render json: @tutorial }

@@ -7,8 +7,9 @@
    $("#tutorial_video_url").on('change',function(){
    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = $("#tutorial_video_url").val().match(regExp);
+    alert(match[7])
     if (match&&match[7].length==11){
-        $("tutorial_video_id").val(match[7])
+        $("#tutorial_video_id").val(match[7])
         return match[7];
     }else{
         alert("Url incorrecta");
@@ -19,7 +20,7 @@
 <%= form_for(@tutorial, :html => { :class => 'form-horizontal' }) do |f| %>
   <fieldset>
     <legend> Tutorial Details</legend>
-    <%= f.text_field :video_id %>
+    <%= f.hidden_field :video_id %>
     <div class="control-group">
       <%= f.label :title,:class => "control-label", :style => "text-align:left"%>
       <div class="controls" style="margin-left:100px;">
@@ -27,17 +28,6 @@
         <% if @tutorial.errors && @tutorial.errors[:title].present? %>
           <span class="help-inline" id="error_explanation">
             <%= @tutorial.errors[:title][0] %>
-          </span>
-        <% end %>
-      </div>
-    </div>
-    <div class="control-group">
-      <%= f.label :description,:class => "control-label",:style => "text-align:left" %>
-      <div class="controls" style="margin-left:100px;">
-        <%= f.text_area :description,:class => "input-large","data-required" => true,:rows  => 4 %>
-        <% if @tutorial.errors && @tutorial.errors[:description].present? %>
-          <span class="help-inline" id="error_explanation">
-            <%= @tutorial.errors[:description][0] %>
           </span>
         <% end %>
       </div>
@@ -62,6 +52,30 @@
         <% if @tutorial.errors && @tutorial.errors[:video_url].present? %>
           <span class="help-inline" id="error_explanation">
             <%= @tutorial.errors[:video_url][0] %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :paid,:class => "control-label",:style => "text-align:left" %>
+      <div class="controls" style="margin-left:100px;">
+        <%= f.check_box :paid,:class => "input-large","data-required" => true,:rows  => 4 %>
+        <% if @tutorial.errors && @tutorial.errors[:paid].present? %>
+          <span class="help-inline" id="error_explanation">
+            <%= @tutorial.errors[:paid][0] %>
+          </span>
+        <% end %>
+      </div>
+    </div>
+    
+    <div class="control-group">
+      <%= f.label :active,:class => "control-label",:style => "text-align:left" %>
+      <div class="controls" style="margin-left:100px;">
+        <%= f.check_box :active,:class => "input-large","data-required" => true,:rows  => 4 %>
+        <% if @tutorial.errors && @tutorial.errors[:active].present? %>
+          <span class="help-inline" id="error_explanation">
+            <%= @tutorial.errors[:active][0] %>
           </span>
         <% end %>
       </div>

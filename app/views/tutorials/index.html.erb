@@ -20,9 +20,6 @@
           Video URL
         </th>
         <th data-hide="phone,tablet">
-          Video URL
-        </th>
-        <th data-hide="phone,tablet">
           View Type
         </th>
       </tr>
@@ -30,9 +27,8 @@
     <tbody>
       <% @tutorials.each do |tot| %>
         <tr>
-        <td><%= tot.location_code %> </td>
-        <td><%= tot.location_name %> </td>
-        <td><%= tot.parent_location_code %></td>
+        <td><%= tot.title %> </td>
+        <td><%= tot.category %> </td>
         <td><%= tot.active %></td>
         <td><%= tot.video_url %></td>
         <td><%= tot.paid %></td>
