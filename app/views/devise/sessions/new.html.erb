@@ -6,16 +6,18 @@
      <% end %>
     </ol>
     <!-- Carousel items -->
+    <h3> Filter Will appear over here with various search options user also can see videos on two modes 1) slider like over here 2) list or cart model</h3>
+
     <div class="carousel-inner">
       <% Tutorial.all.each_with_index do |tot,index| %>
      
       <div class="item <%= index == 0 ? 'active' : ''  %> video_img"  style="height:500px">
-      <%= link_to image_tag(tot.image_url,style: 'margin-left:70px;width:800px;height:400px;cursor:pointer;',:class => 'image_vid'), tot  %>
+      <%= link_to image_tag(tot.image_url,style: 'margin-left:70px;width:800px;height:400px;cursor:pointer;',:class => 'image_vid'),"#" ,:data_url => tutorial_path(tot)  %>
         <div class="carousel-caption">
             <h4><%= tot.title %></h4>
             <p><%= tot.category %><p>
           </div>
-          <div id="play" data-url="<%= tutorial_path(tot) %>">
+          <div id="play" data_url="<%= tutorial_path(tot) %>">
           </div>
         </div>
         
@@ -30,7 +32,7 @@
 </div>
   <script>
    $("#play,.image_vid").on('click',function(){
-    alert("hiiii");
-    e.preventDefault();
+    bootbox.alert("Please Login toview this Video");
+    return false;
   })
   </script>

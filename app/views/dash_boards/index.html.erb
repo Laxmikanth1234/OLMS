@@ -1,1 +1,35 @@
-<% provide(:title, 'OLMS Dash Board') %>
+<% provide(:title, 'Online Learning Management System') %>
+<div id="jobcarousel" class="carousel slide">
+    <ol class="carousel-indicators">
+     <% Tutorial.all.each_with_index do |tot,index| %>
+       <li data-target="#jobcarousel" data-slide-to="<%= index%>" class="active"></li>
+     <% end %>
+    </ol>
+    <!-- Carousel items -->
+    <div class="carousel-inner">
+      <% Tutorial.all.each_with_index do |tot,index| %>
+
+      <div class="item <%= index == 0 ? 'active' : ''  %> video_img"  style="height:500px">
+      <%= link_to image_tag(tot.image_url,style: 'margin-left:70px;width:800px;height:400px;cursor:pointer;',:class => 'image_vid'),"#" ,:data_url => tutorial_path(tot)  %>
+        <div class="carousel-caption">
+            <h4><%= tot.title %></h4>
+            <p><%= tot.category %><p>
+          </div>
+          <div id="play" data_url="<%= tutorial_path(tot) %>">
+          </div>
+        </div>
+
+      <% end %>
+    </div>
+    <!-- Carousel nav -->
+    <a class="carousel-control left" href="#jobcarousel" data-slide="prev" data-interval=5000 data-hover="pause">&lsaquo;</a>
+    <a class="carousel-control right" href="#jobcarousel" data-slide="next" data-interval=5000 data-hover="pause">&rsaquo;</a>
+  </div>
+
+  <!%= link_to "Sign up now!", signup_path, class: "btn btn-large btn-primary" %>
+</div>
+  <script>
+   $("#play,.image_vid").on('click',function(){
+    location.href = $(this).attr("data_url");
+  })
+  </script>

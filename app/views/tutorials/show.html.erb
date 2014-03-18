@@ -1,5 +1,8 @@
+<% provide(:title, 'Online Learning Management System') %>
 <p id="notice"><%= notice %></p>
-
-
-<%= link_to 'Edit', edit_tutorial_path(@tutorial) %> |
-<%= link_to 'Back', tutorials_path %>
+<iframe width="640" height="360" src="https://www.youtube.com/embed/<%= @tutorial.video_id%>?feature=player_embedded" frameborder="0" allowfullscreen></iframe>
+<h1>Link will be provides to read text given by admin</h1>
+<h1> Feed Back will appear with following features</h1>
+<h4>Mail will be shoot to admin all feed backs/admin can setup filter with min/mix rating</h4>
+<h4>viewers can give rating or (thumbsup/thumbs down) along with comments if required we can give control to admin to display comment given by viewer for monitoring</h4>
+<%= link_to 'Back', root_path,:class => "btn" %>

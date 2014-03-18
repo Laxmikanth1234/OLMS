@@ -7,7 +7,6 @@
    $("#tutorial_video_url").on('change',function(){
    var regExp = /^.*((youtu.be\/)|(v\/)|(\/u\/\w\/)|(embed\/)|(watch\?))\??v?=?([^#\&\?]*).*/;
     var match = $("#tutorial_video_url").val().match(regExp);
-    alert(match[7])
     if (match&&match[7].length==11){
         $("#tutorial_video_id").val(match[7])
         return match[7];
